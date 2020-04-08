@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block meta %}
+  {% include('partials/meta.html.twig') with {'meta_title' :'Login to your account',
+  'meta_keywords' : 'sign in',
+  'meta_description' : "Login page of #{site_name}"  
+} %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col col-lg-12">
+<div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+<h1>Login To Your Account</h1>
+<hr>
+<p>Enter your account details.</p>
+<br /><br />
+
+     
+<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4" style="margin-left:auto;margin-right:auto;">
+
+<form method="post" novalidate="novalidate">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% for message in app.flashes('success') %}
+          <div class="alert alert-success">
+              {{ message }}
+          </div>
+    {% endfor %}
+
+    <div class="form-group">
+    Email Address*
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"  autofocus>
+    </div>
+
+     <div class="form-group">
+    Password*
+    <input type="password" name="password" id="inputPassword" class="form-control" >
+    </div>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+    <button class="btn btn-primary  btn-lg btn-block" type="submit">
+        Login
+    </button>
+   
+</form>
+
+<br />
+
+<p style="text-align:center;"><a href="{{ path('forgot_password') }}" style="text-decoration: underline;">Forgot your Password?</a></p>
+<p style="text-align:center;">Not yet a user?</p>
+<a href="{{ path('sign_up') }}"><button class="btn btn-secondary   btn-lg btn-block" type="button">
+     Create Account
+</button></a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

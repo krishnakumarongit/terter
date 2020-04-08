@@ -1,0 +1,137 @@
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+.jumbotron{
+	border-radius:0px;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+
+.footersmall {
+ height:60px;
+ line-height:60px;
+ top:0;
+ background-color:#AFD275;
+ color:#fff;
+ font-size:14px
+}
+.footersmall a {
+ margin-right:10px;
+ margin-left:10px;
+ color:#fff;
+ font-size:1.2em;
+ font-family:jaldi,sans-serif;
+ font-weight:700;
+ text-decoration:none
+}
+.footersmall a.first {
+ margin-left:15px!important
+}
+.footerbottom {
+ line-height:30px;
+ font-size:14px;
+ background-color:#242338;
+ color:#bcbfd2
+}
+.footerpf {
+ font-size:16px;
+ background:#fcb843;
+ color:#fff
+}
+.footerpf a {
+ color:#fff
+}
+.footer {
+ background-color:#2a2a41;
+ color:#fff;
+ padding-top:35px;
+ padding-bottom:35px;
+ line-height:22px
+}
+.footer .heading {
+ padding-bottom:10px;
+ font-weight:700;
+ color:#fff
+}
+.footer a {
+ color:#bcbfd2;
+ line-height:1.9em
+}
+
+.kk{
+  background-image: url('./../banner.jpg'); background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.mue {
+  background: rgba(0, 0, 0, 0.5);padding-bottom:20px; border-radius: 15px;
+}
+
+.robo {
+  color:#AFD275;font-family: 'Roboto', sans-serif;
+}
+
+.bg-green{
+  background-color: #AFD275;
+}
+
+
+.bg-palegreen{
+  background-color: #AFD275;
+}
+
+
+.foot-pad {
+  padding:0px 15px 0px 0px;
+}
+
+.form-error{
+  color: #ec2323;
+}
+
+.color-palegreen{
+  color: #AFD275;
+}
+.block {
+  display: block;
+}
+
+.accnav li a {
+  color: #000;
+  text-decoration: none;
+}

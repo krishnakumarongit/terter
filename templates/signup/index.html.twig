@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block meta %}
+  {% include('partials/meta.html.twig') with {'meta_title' :'Create a new account',
+  'meta_keywords' : 'sign up',
+  'meta_description' : "New account create page of #{site_name}"  
+} %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col col-lg-12">
+<div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+<h1>Create a new account</h1>
+<hr>
+<p>Create your free account with {{site_name}} by completing the fields below. <a href="{{ path('app_login') }}">Click here to Sign in</a> if you already have an account.</p>
+{% if formError == 1 %}
+<div class="alert alert-danger" role="alert">
+We found errors in your sign up details. Please correct the errors below and submit again.
+</div>
+{% endif %}
+<br /><br />
+<!-- -->
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+<div class="row">
+<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4" style="margin-left:auto;margin-right:auto;">
+
+
+<div class="form-group">
+Email Address*
+ {{ form_widget(form.email,  {'attr': {'class': 'form-control input-lg'}}) }}
+ <div class="form-error">
+        {{ form_errors(form.email) }}
+ </div>
+</div>
+<div class="form-group">
+Password*
+ {{ form_widget(form.password.first,  {'attr': {'class': 'form-control input-lg'}}) }}
+ <div class="form-error">
+        {{ form_errors(form.password.first) }}
+ </div>
+</div>
+<div class="form-group">
+Confirm Password*
+ {{ form_widget(form.password.second,  {'attr': {'class': 'form-control input-lg'}}) }}
+ <div class="form-error">
+        {{ form_errors(form.password.second) }}
+ </div>
+</div>
+<p>by clicking create account, you agree to our Terms and conditions, Privacy Policy, and Cookie Policy.
+    </p>
+ {{ form_widget(form.create_account,  {'attr': {'class': 'btn btn-primary  btn-lg btn-block', 'value':'Create Account'}}) }}
+<br>
+</div>
+</div>
+{{ form_end(form) }}
+
+
+<!-- -->
+
+</div>
+     
+    </div>
+
+
+</div>
+</div>
+{% endblock %}

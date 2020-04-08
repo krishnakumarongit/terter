@@ -1,0 +1,10 @@
+<ul class="list-group list-group-flush accnav">
+ <li class="list-group-item"><a href="{{ path('my_account') }}"><i class="fas fa-tachometer-alt color-palegreen"></i>&nbsp;Dashboard</a></li>
+{% if app.user.getEmailValid() != 1 %}
+ <li class="list-group-item"><a href="{{ path('verify_email') }}"><i class="fa fa-paper-plane color-palegreen"></i>&nbsp; Verify Email</a></li>
+{% endif %}
+ <li class="list-group-item"><a href="{{ path('login_info') }}"><i class="fas fa-lock color-palegreen"></i>&nbsp;Change Login Email</a></li>
+  <li class="list-group-item"><a href="{{ path('password_info') }}"><i class="fas fa-key color-palegreen"></i>&nbsp;Change Password</a></li>
+ <li class="list-group-item"><i class="fas fa-user color-palegreen"></i>&nbsp;Personal Info</li>
+ <li class="list-group-item "><a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt color-palegreen block"></i>&nbsp;Logout</a></li>
+</ul>

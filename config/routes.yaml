@@ -1,0 +1,39 @@
+home_page:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+sign_up:
+     path: /sign-up
+     controller: App\Controller\SignupController::index
+
+activate_account:
+     path: /activate/{token}
+     controller: App\Controller\ActivateController::index
+
+forgot_password:
+     path: /forgot-password
+     controller: App\Controller\ForgotpasswordController::index
+
+reset_password:
+     path: /reset-password/{token}
+     controller: App\Controller\ActivateController::reset
+
+reset_password_success:
+     path: /reset-password-success
+     controller: App\Controller\ActivateController::success
+
+login_info:
+     path: /login-info
+     controller: App\Controller\MyaccountController::login
+
+password_info:
+     path: /password-info
+     controller: App\Controller\MyaccountController::password
+
+verify_email:
+     path: /myaccount-email-verify
+     controller: App\Controller\MyaccountController::verify
+
+before_logout:
+     path: /before-logout-login
+     controller: App\Controller\SignupController::beforelogout

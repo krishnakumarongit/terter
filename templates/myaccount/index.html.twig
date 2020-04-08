@@ -1,0 +1,78 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block meta %}
+  {% include('partials/meta.html.twig') with {'meta_title' :'Create a new account',
+  'meta_keywords' : 'sign up',
+  'meta_description' : "New account create page of #{site_name}"  
+} %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col col-lg-12">
+<div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+<h1>My Account</h1>
+<hr />
+
+<div class="row">
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-3" style="margin-bottom:20px;">
+<div class="card">
+  {% include('partials/accountnav.html.twig') %}
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 ">
+<div class="row">
+
+
+
+
+
+<div class="col-lg-12">
+
+{% if app.user.getEmailValid() != 1 %}
+<p><h4><i class="fas fa-bell"></i> Verify your account email address</h4></p>
+
+<div class="alert alert-warning" role="alert">
+We have sent an email with a confirmation link to your email address [<span style="color:blue;">{{app.user.getEmail()}}</span>]. Please click the confirmation link in the email to complete the registration process.
+In order to use all features of {{site_name}}, the email address of your account needs to be verified.
+</div>
+
+
+<p>
+<h4>Didn't get the email?</h4>
+If you do not receive the activation email within 5 minutes of signing up, please check your Spam, Junk E-mail folder.
+
+
+<br />
+<a href="{{ path('verify_email') }}" class="btn btn-secondary my-4"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;Resend activation link</a>
+<br />
+<h4>Wrong email?</h4>
+You can always change your email address  <br />
+<a href="{{ path('login_info') }}" class="btn btn-primary my-4"><i class="fa fa-at fa-fw"></i>&nbsp;Change login email</a></p>
+</div>
+{% endif %}
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

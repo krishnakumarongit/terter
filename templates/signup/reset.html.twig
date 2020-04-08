@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+  {% include('partials/meta.html.twig') with {'meta_title' :'Password reset link sent',
+  'meta_keywords' : 'reset password link',
+  'meta_description' : "Reset password request success page of #{site_name}"  
+} %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+<div class="col col-lg-12">
+<div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+<h1>Success: We have E-mailed your password reset link</h1>
+<hr>
+<p><i style="color:#AFD275" class="fa fa-check fa-fw"></i>
+A message has been sent to your email with a link to reset your password. If you do not receive your email within five minutes check your spam folder.
+</p>
+<br /><br />
+</div>
+</div>
+</div>
+{% endblock %}

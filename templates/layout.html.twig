@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('theme/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('theme/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('theme/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('theme/site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ asset('theme/css/bootstrap.min.css') }}">
+    <link href="{{ asset('theme/css/album.css') }}" rel="stylesheet">
+    <link href="{{ asset('theme/fa/css/all.css') }}" rel="stylesheet"> 
+    {% block meta %}
+    {% endblock %}
+  </head>
+
+  <body>
+
+    <header>
+     
+  <nav class="navbar navbar-expand-lg navbar-light bg-palegreen">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#"><img alt="logo of {{site_name}}" src="{{ asset('theme/logo4.png') }}" height="45px;"></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Disabled</a>
+      </li>
+	  
+{% if app.user %}
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <i class="fa fa-user fa-fw"></i> My Account
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="{{ path('my_account') }}">Dashboard</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+       <a class="dropdown-item " href="{{ path('app_logout') }}"> <i class="fas fa-sign-out-alt color-palegreen"></i>&nbsp;Logout</a>
+    </div>
+  </li>
+{% else %}
+       <li class="nav-item">
+        <a class="nav-link " href="{{ path('app_login') }}"> <i class="fa  fa-chevron-circle-right fa-fw"></i> Login</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link " href="{{ path('sign_up') }}"> <i class="fa fa-user fa-fw"></i> Register</a>
+      </li>
+{% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+<a href="#" class="btn btn-secondary my-2"><i class="fa fa-plus fa-fw"></i> Post Ad</a>
+    </form>
+  </div>
+</nav>
+
+    </header>
+
+    <main role="main">
+
+    {% block content %}
+    {% endblock %}
+
+    </main>
+
+<div class="footersmall">
+<div class="container">
+<div class="row foot-pad" >
+<a href="#" class="first">About</a>
+<a href="#">Contact</a>
+<a href="#">Advertising</a>
+<a href="#" class="d-none d-lg-block d-md-block">Write For Us</a>
+<a href="#" class="d-none d-lg-block d-md-block">Link to Us</a>
+<a href="#" class="d-none d-lg-block d-md-block">Banners</a>
+</div>
+</div>
+</div>
+    <div class="footer">
+<div class="container">
+<div class="row foot-pad" >
+<div class="col-xs-6 col-sm-3">
+<div class="heading">Social Media</div>
+<a href="#" title="Like  on facebook" target="_blank">Like us on Facebook</a>
+<br><a href="#" title="Follow  on twitter" target="_blank">Follow us on Twitter</a>
+<br><a href="#" title="Follow  on google" rel="publisher" target="_blank">
+Follow us on Google Plus</a><br><br>
+<a href="#" title="CA pets"><img src="{{ asset('theme/logo4.png') }}" alt="Pets4Homes" width="140"></a>
+</div>
+<div class="col-xs-6 col-sm-9">
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div class="heading"><a href="#" style="color:#ffffff">Dogs &amp; Puppies for Sale</a></div>
+<a href="#">French Bulldogs for Sale</a><br><a href="#">Chihuahuas for Sale</a><br><a href="#">Pugs for Sale</a><br><a href="#">Cocker Spaniels for Sale</a><br><a href="#">Labradors for Sale</a><br><a href="#">Bulldogs for Sale</a><br>
+</div>
+<div class="col-sm-4 col-md-3 hidden-xs">
+<div class="heading">Cats &amp; Kittens for Sale</div>
+<a href="">Bengals for Sale</a><br><a href="">British Shorthairs for Sale</a><br><a href="">Oriental Cats for Sale</a><br><a href="">Persian Cats for Sale</a><br><a href="">Ragdoll Cats for Sale</a><br><a href="">Siamese Cats for Sale</a><br>
+</div>
+<div class="col-sm-4 col-md-3 hidden-xs">
+<div class="heading">Other Pets for Sale</div>
+<a href="">Birds for Sale</a><br><a href="">Fish for Sale</a><br><a href="">Horses for Sale</a><br><a href="">Poultry for Sale</a><br><a href="">Rabbits for Sale</a><br><a href="">Rodents for Sale</a>
+</div>
+<div class="col-md-3 d-none d-lg-block">
+<div class="heading">Other Pages</div>
+<a href="">Cat Breeds</a><br><a href="">Dog Breeds</a><br><a href="">Pet Adoption</a><br><a href="">Dog Adoption</a><br><a href="">Cat Adoption</a><br><a href="">Sell Pets for Free</a>
+</div>
+</div>
+</div>
+</div> 
+</div>
+</div>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>&copy; Copyright - {{ site_name }} 2020</p>
+        <p>To enhance your user experience {{site_name}} uses cookies on this site.</p><p> For more information please read our <a href="../../getting-started/"> Privacy Policy and Cookie Policy</a>.</p>
+        <p>Last update: 7:01 a.m. (IST) 29th March 2020.</p>
+      </div>
+    </footer>
+    <script src="{{ asset('theme/js/jquery.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="{{ asset('theme/js/bootstrap.min.js') }}" ></script>
+  </body>
+</html>
