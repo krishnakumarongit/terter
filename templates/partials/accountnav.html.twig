@@ -3,6 +3,9 @@
 {% if app.user.getEmailValid() != 1 %}
  <li class="list-group-item"><a href="{{ path('verify_email') }}"><i class="fa fa-paper-plane color-palegreen"></i>&nbsp; Verify Email</a></li>
 {% endif %}
+<li class="list-group-item"><a href="{{ path('myaccount_gallery_list') }}"><i class="fas fa-dog color-palegreen"></i>&nbsp;Pets Image Gallery</a></li>
+
+
  <li class="list-group-item"><a href="{{ path('login_info') }}"><i class="fas fa-lock color-palegreen"></i>&nbsp;Change Login Email</a></li>
   <li class="list-group-item"><a href="{{ path('password_info') }}"><i class="fas fa-key color-palegreen"></i>&nbsp;Change Password</a></li>
  <li class="list-group-item"><i class="fas fa-user color-palegreen"></i>&nbsp;Personal Info</li>

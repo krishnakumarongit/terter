@@ -1,0 +1,101 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+
+ {% if type == 'all' or type == 'All' %}
+  {% include('partials/meta.html.twig') with {'meta_title' :'Pets Photo Gallery',
+  'meta_keywords' : 'Pets images, pets photos,pets gallery, dogs photos, cat photos',
+  'meta_description' : " #{site_name} photo gallery is the largest collection Dogs photos,Cats photos,Puppy photos. Upload and share your pets photos for free."  
+} %}
+
+{% else %}
+
+{% include('partials/meta.html.twig') with {'meta_title' : ''~ type ~ ' Photo Gallery',
+  'meta_keywords' : ''~ type ~' images, '~ type ~ 'photos, '~ type ~' gallery',
+  'meta_description' : "#{site_name} "~ type ~ "s photo gallery is the largest collection "~ type ~ " photos. Our "~ type ~ "s gallery has more than "~ total ~ " photos. Upload and share your "~ type ~ "s photos for free."  
+} %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col col-lg-12" style="background:#F9F9F9;padding-top:10px;padding-bottom:5px;">
+<div class="container">
+
+<h1 style="font-size:26px;">{% if type|lower == 'all' %} Pets {% else %} {{type}} {% endif %} Photo Gallery</h1>
+<hr>
+<p><i style="color:#AFD275" class="fa fa-check fa-fw"></i>Upload and share your {% if type == 'all' %} pets {% else %} {{type|lower}} {% endif %} photos for free.</p>
+<p><a href=""><button class="btn btn-purple  my-2"><i class="fa fa-plus fa-fw"></i> Add Your {% if type|lower == 'all' %} Pets {% else %} {{type}}s {% endif %} Photo</button></a></p>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col col-lg-12">
+<div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+<!-- h1 style="font-size:26px;">Pets Photo Gallery</h1>
+<hr>
+<p><i style="color:#AFD275" class="fa fa-check fa-fw"></i>Upload and share your pets photos for free.</p>
+<p><a href=""><button class="btn btn-primary my-2"><i class="fa fa-plus fa-fw"></i> Add Your Pets Photo</button></a></p -->
+
+<p style="text-align:right;">
+<i class="fa fa-filter color-palegreen fa-fw"></i> Filter By
+<select id="gallery_form_type" style="border:1px solid #ccc" onchange="redirect(this.value)" name="gallery_form[type]">
+<option value="all" {% if(type=='all') %} selected="selected" {% endif %}  >All Types</option>
+<option value="bird" {% if(type=='Bird') %} selected="selected" {% endif %} >Bird</option>
+<option value="cat" {% if(type=='Cat') %} selected="selected" {% endif %} >Cat</option>
+<option value="dog" {% if(type=='Dog') %} selected="selected" {% endif %} >Dog</option>
+<option value="fish" {% if(type=='Fish') %} selected="selected" {% endif %} >Fish</option>
+<option value="horse" {% if(type=='Horse') %} selected="selected" {% endif %} >Horse</option>
+<option value="invertebrate" {% if(type=='Invertebrate') %} selected="selected" {% endif %} >Invertebrate</option>
+<option value="poultry" {% if(type=='Poultry') %} selected="selected" {% endif %} >Poultry</option>
+<option value="rabbit" {% if(type=='Rabbit') %} selected="selected" {% endif %} >Rabbit</option>
+<option value="reptile" {% if(type=='Reptile') %} selected="selected" {% endif %} >Reptile</option>
+<option value="rodent" {% if(type=='Rodent') %} selected="selected" {% endif %} >Rodent</option>
+</select>
+</p>
+<br /><br />
+
+<!-- -->
+ <div class="card-columns">
+           
+{%  for listitem in list  %}           
+<div class="card text-primary" style="margin-bottom:5px;">
+    <img style="cursor:pointer;" onclick="window.location.href='{{ url('gallery_view',{id: listitem.id }) }}'" class="card-img-to img-fluid" src="{{ asset('uploads/gallery/'~listitem.image~'') }}" alt="photo of {{ listitem.type }} {{ listitem.name }}">
+    <div class="card-body" style="padding-top:5px;padding-bottom:0px;padding-left:10px;">
+        <p class="card-title" style="margin-bottom:5px;">
+        <i class="fa fa-heart color-palegreen fa-fw"></i>&nbsp;
+        <i class="fa fa-comment color-palegreen fa-fw"></i>
+        </p>
+    </div>
+</div>
+{% endfor %}   
+</div>
+<!-- -->
+<br />
+{% if linkCount > 0 %}
+<div class="d-flex justify-content-center" style="width:100%;">
+ <ul class="pagination">
+	{% for i in 0..(linkCount -1) %}
+		<li class="page-item" ><a  class="page-link  {% if page == i+1 %} bg-palegreen white {% endif %}" href="{{ path('public_gallery',{page: i+1, type : type|lower }) }}">{{ i+1 }}</a></li>
+	{% endfor %}
+</ul>
+</div>
+{% endif %}
+</div>
+
+
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+function redirect(a) {
+
+    var url = "{{url('public_gallery') }}";
+	window.location.href = url+'/1/'+a;
+}
+</script>
+{% endblock %}

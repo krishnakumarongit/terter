@@ -89,6 +89,31 @@ class User implements UserInterface
      */
     private $token;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $about_me;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $profile_photo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $main_telephone_number;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $secondary_telephone_number;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -235,6 +260,66 @@ class User implements UserInterface
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    public function getAboutMe(): ?string
+    {
+        return $this->about_me;
+    }
+
+    public function setAboutMe(string $about_me): self
+    {
+        $this->about_me = $about_me;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    public function getProfilePhoto(): ?string
+    {
+        return $this->profile_photo;
+    }
+
+    public function setProfilePhoto(string $profile_photo): self
+    {
+        $this->profile_photo = $profile_photo;
+
+        return $this;
+    }
+
+    public function getMainTelephoneNumber(): ?string
+    {
+        return $this->main_telephone_number;
+    }
+
+    public function setMainTelephoneNumber(string $main_telephone_number): self
+    {
+        $this->main_telephone_number = $main_telephone_number;
+
+        return $this;
+    }
+
+    public function getSecondaryTelephoneNumber(): ?string
+    {
+        return $this->secondary_telephone_number;
+    }
+
+    public function setSecondaryTelephoneNumber(string $secondary_telephone_number): self
+    {
+        $this->secondary_telephone_number = $secondary_telephone_number;
 
         return $this;
     }

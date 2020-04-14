@@ -4,10 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('theme/apple-touch-icon.png') }}">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('theme/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('theme/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('theme/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('theme/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('theme/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('theme/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('theme/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('theme/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('theme/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('theme/android-icon-192x192.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('theme/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('theme/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('theme/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('theme/site.webmanifest') }}">
+    <link rel="manifest" href="{{ asset('theme/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ asset('theme/ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="{{ asset('theme/css/bootstrap.min.css') }}">
     <link href="{{ asset('theme/css/album.css') }}" rel="stylesheet">
     <link href="{{ asset('theme/fa/css/all.css') }}" rel="stylesheet"> 
@@ -19,7 +34,7 @@
 
     <header>
      
-  <nav class="navbar navbar-expand-lg navbar-light bg-palegreen">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-palegreen">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,19 +42,19 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item ">
+        <a class="nav-link" href="{{ path('public_gallery') }}">Photos</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link " href="#">Disabled</a>
       </li>
 	  
 {% if app.user %}
 
-<li class="nav-item dropdown">
+<li class="nav-item  dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
      <i class="fa fa-user fa-fw"></i> My Account
     </a>
@@ -60,7 +75,7 @@
 {% endif %}
     </ul>
     <form class="form-inline my-2 my-lg-0">
-<a href="#" class="btn btn-secondary my-2"><i class="fa fa-plus fa-fw"></i> Post Ad</a>
+<a href="#" class="btn btn-secondary-top my-2"><i class="fa fa-plus fa-fw"></i> Post Ad</a>
     </form>
   </div>
 </nav>

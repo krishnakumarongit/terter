@@ -1,0 +1,68 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+
+  {% include('partials/meta.html.twig') with {'meta_title' :'Pets Photo Gallery',
+  'meta_keywords' : 'Pets images, pets photos,pets gallery, dogs photos, cat photos',
+  'meta_description' : " #{site_name} photo gallery"  
+} %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-12">
+        <div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+            <!-- -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <div class="col-12">
+      <img src="{{ asset('uploads/gallery/'~post.image~'') }}" class="img-fluid"  alt="photo of {{ post.type }} {{ post.name }}">
+      <p class="card-title" style="margin-bottom:5px;margin-top:10px;">
+        <i class="fa fa-heart color-palegreen fa-fw"></i>&nbsp;
+        <i class="fa fa-comment color-palegreen fa-fw"></i>
+        </p>
+
+
+        <div style="width:100%;">
+           <p>Post a Comment</p>
+           <textarea style="width:100%;"></textarea>
+           <div style="margin-top:5px;">
+            <button type="button" class="btn btn-purple" style="background-colour:#fff;">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin-bottom:20px;">
+   <div class="col-12">
+ 
+    <div class="card">
+  <div class="card-body " style="text-align:center;">
+   <b class="purple-text"> Upload your pets photos</b>
+    <div style="margin-top:10px;>
+    <button type="button" class="btn  btn-purple " style="background-colour:#fff;">Upload Now</button>
+    </div>
+  </div>
+</div>
+
+
+ </div>
+  </div>
+</div>
+
+
+            <!-- -->
+
+
+        </div>
+
+
+      </div>
+  </div>
+</div>
+
+{% endblock %}

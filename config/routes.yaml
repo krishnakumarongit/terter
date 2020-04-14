@@ -37,3 +37,32 @@ verify_email:
 before_logout:
      path: /before-logout-login
      controller: App\Controller\SignupController::beforelogout
+
+myaccount_gallery:
+     path: /my-gallery
+     controller: App\Controller\MyaccountController::gallery
+
+public_gallery:
+     path: /pets-photo-gallery/{page}/{type}
+     controller: App\Controller\GalleryController::index
+     defaults:
+        page: 1
+        type: all
+        
+myaccount_gallery_edit:
+     path: /my-gallery-edit/{token}
+     controller: App\Controller\MyaccountController::galleryEdit
+
+
+myaccount_gallery_delete:
+     path: /my-gallery-delete/{token}
+     controller: App\Controller\MyaccountController::galleryDelete
+
+myaccount_gallery_list:
+     path: /my-gallery-list
+     controller: App\Controller\MyaccountController::galleryList
+
+
+gallery_view:
+     path: /photo-details/{id}
+     controller: App\Controller\GalleryController::details

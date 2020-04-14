@@ -45,7 +45,7 @@ footer p {
  height:60px;
  line-height:60px;
  top:0;
- background-color:#AFD275;
+ background-color:#563d7c;
  color:#fff;
  font-size:14px
 }
@@ -107,15 +107,13 @@ footer p {
 }
 
 .bg-green{
-  background-color: #AFD275;
+  background-color: #563d7c;
 }
 
 
 .bg-palegreen{
-  background-color: #AFD275;
+  background-color: #563d7c;
 }
-
-
 .foot-pad {
   padding:0px 15px 0px 0px;
 }
@@ -125,7 +123,7 @@ footer p {
 }
 
 .color-palegreen{
-  color: #AFD275;
+  color: #563d7c;
 }
 .block {
   display: block;
@@ -134,4 +132,63 @@ footer p {
 .accnav li a {
   color: #000;
   text-decoration: none;
+}
+
+.page-link {
+  color: #000;
+}
+
+.fit-image{
+width: 100%;
+object-fit: cover;
+
+}
+
+
+.btn-secondary-top {
+    color: #ffe484;
+     background-color: none !important;
+    border-color: #ffe484;
+}
+
+
+.btn-secondary-top:hover {
+    color: #2a2730;
+    background-color: #ffe484;
+    border-color: #ffe484;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link{
+  color:#fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:#fff;
+}
+
+.nav-link:hover{
+  color:#fff;
+}
+
+.purple {
+  background-color: #373373;
+}
+
+.purple-text {
+  color: #373373;
+}
+
+.white {
+  color: #fff;
+}
+
+.btn-purple {
+  background-color: #373373;
+  color: #fff;
+}
+
+.btn-purple:hover {
+  background-color: #373373;
+  color: #fff;
+  cursor: pointer;
 }
