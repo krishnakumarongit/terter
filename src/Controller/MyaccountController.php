@@ -100,7 +100,7 @@ class MyaccountController extends AbstractController
                         $emailToken = md5($user->getId().'-'.$email.'-'.time());
                     }
 
-                     if ($sendMail ==1) {
+                    if ($sendMail ==1) {
                         $spamCheck = new Spam();
                         $spamCheck->setEmail($user->getId());
                         $spamCheck->setIpAddress($_SERVER['REMOTE_ADDR']);

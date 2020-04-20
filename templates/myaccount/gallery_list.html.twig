@@ -44,7 +44,7 @@
   {%  for listitem in list  %}
     <div class="col-xs-4 col-sm-6 col-md-6 col-lg-4" style="margin-top:20px;">
       <div class="card">
-      <img class="card-img-top" style="height:150px;" src="{{ asset('uploads/gallery/'~ listitem.image ~ '' ) }}" alt="image of {{ listitem.name }}">
+      <img class="card-img-top  img-fluid" style="height:150px;" src="{{ asset('uploads/gallery/'~ listitem.image ~ '' ) }}" alt="image of {{ listitem.name }}">
       <div class="card-body">
       <p style="text-align:center;">{{ listitem.name }}</p>
          {% if listitem.status == 'Inactive' %} 

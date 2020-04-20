@@ -33,6 +33,12 @@
           </div>
     {% endfor %}
 
+    {% for message in app.flashes('error') %}
+          <div class="alert alert-danger">
+              {{ message }}
+          </div>
+    {% endfor %}
+
     <div class="form-group">
     Email Address*
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"  autofocus>

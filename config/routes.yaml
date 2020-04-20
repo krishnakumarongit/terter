@@ -66,3 +66,7 @@ myaccount_gallery_list:
 gallery_view:
      path: /photo-details/{id}
      controller: App\Controller\GalleryController::details
+
+gallery_like:
+     path: /photo-like/{id}
+     controller: App\Controller\GalleryController::like

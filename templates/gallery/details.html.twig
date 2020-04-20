@@ -15,25 +15,73 @@
   <div class="row">
     <div class="col col-lg-12">
         <div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
+{% for message in app.flashes('error') %}
+  <div class="alert alert-danger">
+    {{ message }}
+  </div>
+{% endfor %}
+
+{% for message in app.flashes('success') %}
+  <div class="alert alert-success">
+    {{ message }}
+  </div>
+{% endfor %}
             <!-- -->
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <div class="col-12">
       <img src="{{ asset('uploads/gallery/'~post.image~'') }}" class="img-fluid"  alt="photo of {{ post.type }} {{ post.name }}">
       <p class="card-title" style="margin-bottom:5px;margin-top:10px;">
-        <i class="fa fa-heart color-palegreen fa-fw"></i>&nbsp;
-        <i class="fa fa-comment color-palegreen fa-fw"></i>
+        <a style="text-decoration:none;color:#000;" href="javascript:void(0);" onclick="post_like_ajax({{ post.id}})"><i class="fa fa-heart color-palegreen fa-fw"></i> <span id="like_count_{{ post.id}}">
+            {% if (youLike == 1) and (likeCount == 0) %} you liked this {% elseif (youLike == 1) and (likeCount != 0) %} you and {{ likeCount }} others liked this {% else %} {{ likeCount }} {% endif %}
+        </span></a> &nbsp;
+        <i class="fa fa-comment color-palegreen fa-fw"></i><span id="comment_count_{{ post.id}}">{{commentCount}}</span>
         </p>
-
-
-        <div style="width:100%;">
+        <p>{{ post.name|capitalize }}</p>
+        {% if post.title != "" %}
+          <p>{{ post.title }}</p>
+        {% endif %}
+{{ form_start(form, {'name':'form',  attr: {novalidate: 'novalidate', onsubmit: 'return validate()'}}) }}
+        <div style="width:100%;margin-bottom:20px;padding:10px;background:#ccc;">
            <p>Post a Comment</p>
-           <textarea style="width:100%;"></textarea>
+           {{ form_widget(form.comment,  {'attr': {'class': 'form-control input-lg'}}) }}
+ <div id="form_comment_error" class="form-error">
+        {{ form_errors(form.comment) }}
+ </div>
            <div style="margin-top:5px;">
-            <button type="button" class="btn btn-purple" style="background-colour:#fff;">Submit</button>
+           {{ form_widget(form.submit,  {'attr': {'class': 'btn btn-purple  btn-lg ', 'value':'Submit'}}) }}
+           
             </div>
         </div>
-    </div>
+{{ form_end(form) }}
+
+
+        <div class="row">
+{% if commentCount > 0 %}
+  {%  for data in comments %}
+        <div class="col-12" style="margin-bottom:10px;">
+            <div class="card card-white postz">
+                <div class="post-heading">
+                    <div class="float-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="float-left meta">
+                        <div class="title h5">
+                            <a href="#"><b>{{ data.first_name }}</b></a>
+                            made a post.
+                        </div>
+                        <h6 class="text-muted time">{{ data.created_on|date("F jS \\a\\t g:ia Y") }}</h6>
+                    </div>
+                </div> 
+                <div class="post-description"> 
+                    <p>{{ data.comment }}</p>
+                </div>
+            </div>
+        </div>
+  {% endfor %}
+{% endif %}
+</div>
+</div>
 
 
   </div>
@@ -44,7 +92,9 @@
   <div class="card-body " style="text-align:center;">
    <b class="purple-text"> Upload your pets photos</b>
     <div style="margin-top:10px;>
-    <button type="button" class="btn  btn-purple " style="background-colour:#fff;">Upload Now</button>
+    <a href="{{ path('myaccount_gallery') }}">
+      <button type="button" class="btn  btn-purple " style="background-colour:#fff;">Upload Now</button>
+    </a>
     </div>
   </div>
 </div>
@@ -65,4 +115,36 @@
   </div>
 </div>
 
+{% endblock %}
+
+ {% block java %}
+<script type="text/javascript">
+function validate () {
+  if (document.getElementById('form_comment').value == '') {
+    document.getElementById('form_comment_error').innerHTML  ='Comment is required.';
+    document.getElementById('form_comment').focus();
+    return false;
+  } else if (document.getElementById('form_comment').value.length < 10) {
+     document.getElementById('form_comment_error').innerHTML  ='Comments should be at least 10 characters in length';
+    document.getElementById('form_comment').focus();
+    return false;
+  }
+  return true; 
+}
+
+function post_like_ajax  (id) {
+    $('#like_count_'+id).html('<i class="fa fa-spinner" aria-hidden="true"></i>');
+    var url = '{{ path("gallery_like", {'id': 'region_id'}) }}'; 
+    url = url.replace("region_id", id);
+    $.ajax({
+      type: 'GET',
+      url: url,
+      async: false,
+      dataType: 'json',
+      success: function (data) {
+          $('#like_count_'+id).html(data.message);
+      }
+    });
+}
+</script>
 {% endblock %}

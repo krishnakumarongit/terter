@@ -26,8 +26,12 @@
 
 <h1 style="font-size:26px;">{% if type|lower == 'all' %} Pets {% else %} {{type}} {% endif %} Photo Gallery</h1>
 <hr>
-<p><i style="color:#AFD275" class="fa fa-check fa-fw"></i>Upload and share your {% if type == 'all' %} pets {% else %} {{type|lower}} {% endif %} photos for free.</p>
-<p><a href=""><button class="btn btn-purple  my-2"><i class="fa fa-plus fa-fw"></i> Add Your {% if type|lower == 'all' %} Pets {% else %} {{type}}s {% endif %} Photo</button></a></p>
+<p>
+<i style="color:#AFD275" class="fa fa-check fa-fw"></i>Upload and share your {% if type|lower == 'all' %} pets {% else %} {{type|lower}} {% endif %} photos for free.
+</p>
+<p>
+<a href="{{ path('myaccount_gallery') }}"><button class="btn btn-purple  my-2"><i class="fa fa-plus fa-fw"></i> Add Your {% if type|lower == 'all' %} Pets {% else %} {{type}}s {% endif %} Photo</button></a>
+</p>
 </div>
 </div>
 
@@ -35,10 +39,6 @@
 <div class="row">
 <div class="col col-lg-12">
 <div class="col col-lg-12" style="padding-top:20px;padding-bottom:40px;">
-<!-- h1 style="font-size:26px;">Pets Photo Gallery</h1>
-<hr>
-<p><i style="color:#AFD275" class="fa fa-check fa-fw"></i>Upload and share your pets photos for free.</p>
-<p><a href=""><button class="btn btn-primary my-2"><i class="fa fa-plus fa-fw"></i> Add Your Pets Photo</button></a></p -->
 
 <p style="text-align:right;">
 <i class="fa fa-filter color-palegreen fa-fw"></i> Filter By
@@ -66,7 +66,7 @@
     <img style="cursor:pointer;" onclick="window.location.href='{{ url('gallery_view',{id: listitem.id }) }}'" class="card-img-to img-fluid" src="{{ asset('uploads/gallery/'~listitem.image~'') }}" alt="photo of {{ listitem.type }} {{ listitem.name }}">
     <div class="card-body" style="padding-top:5px;padding-bottom:0px;padding-left:10px;">
         <p class="card-title" style="margin-bottom:5px;">
-        <i class="fa fa-heart color-palegreen fa-fw"></i>&nbsp;
+        <a style="text-decoration:none;color:#000;" href="javascript:void(0);" onclick="post_like_ajax({{ listitem.id}})"><i class="fa fa-heart color-palegreen fa-fw"></i> <span id="like_count_{{ listitem.id}}">0</span></a>&nbsp;
         <i class="fa fa-comment color-palegreen fa-fw"></i>
         </p>
     </div>
@@ -96,6 +96,27 @@ function redirect(a) {
 
     var url = "{{url('public_gallery') }}";
 	window.location.href = url+'/1/'+a;
+}
+</script>
+{% endblock %}
+
+
+
+ {% block java %}
+<script type="text/javascript">
+function post_like_ajax  (id) {
+    $('#like_count_'+id).html('<i class="fa fa-spinner" aria-hidden="true"></i>');
+    var url = '{{ path("gallery_like", {'id': 'region_id'}) }}'; 
+    url = url.replace("region_id", id);
+    $.ajax({
+      type: 'GET',
+      url: url,
+      async: false,
+      dataType: 'json',
+      success: function (data) {
+          $('#like_count_'+id).html(data.message);
+      }
+    });
 }
 </script>
 {% endblock %}

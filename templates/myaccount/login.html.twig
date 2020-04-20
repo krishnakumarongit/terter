@@ -37,6 +37,14 @@
   </div>
 {% endfor %}
 
+
+{% for message in app.flashes('error') %}
+  <div class="alert alert-danger">
+    {{ message }}
+  </div>
+{% endfor %}
+
+
 {% if errorMessage != '' %}
  <div class="alert alert-danger">
     {{ errorMessage }}
